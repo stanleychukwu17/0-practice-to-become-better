@@ -1,2 +1,0 @@
-to start the container, use the full path to your nginx conf as the volume
-$ docker run -d --name nginx_0 --hostname nginx_0 -p 80:80 -v "D:/Sz - projects/28-devops/3-nginx/0-practice/0-nodeapp-simple/nginx.conf:/etc/nginx/nginx.conf" nginx:1.26.3
