@@ -17,6 +17,6 @@ USER app
 COPY --chown=app:app . ./
 # RUN chown -r app:app /usr/src/app
 
-EXPOSE 4000
+EXPOSE 9000
 
 CMD [ "npm", "run", "dev" ]
