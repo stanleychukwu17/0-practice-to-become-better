@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  nodeapp1:
+    image: node_app_0_for_test:v1
+    hostname: nodeapp1
+    container_name: nodeapp1
+    networks: 
+      - node_0_network
+
+  nodeapp2:
+    image: node_app_0_for_test:v1
+    hostname: nodeapp2
+    container_name: nodeapp2
+    networks: 
+      - node_0_network
+
+  nodeapp3:
+    image: node_app_0_for_test:v1
+    hostname: nodeapp3
+    container_name: nodeapp3
+    networks: 
+      - node_0_network
+  
+  nginx_0:
+    image: nginx:1.26.3
+    container_name: nginx_0
+    hostname: nginx_0
+    volumes:
+      - "D:/Sz - projects/28-devops/3-nginx/0-practice/0-nodeapp-simple/nginx.conf:/etc/nginx/nginx.conf:/etc/nginx/nginx.conf"
+    ports:
+      - "80:80"
+    depends_on:
+      - nodeapp1
+      - nodeapp2
+      - nodeapp3
+    networks: 
+      - node_0_network
+
+networks:
+  node_0_network:
+    driver: bridge
