@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  client1:
+    build:
+      context: ./client1
+      dockerfile: Dockerfile.dev
+    container_name: websocket_client_mouse_app
+    hostname: websocket_client_mouse_app
+    ports:
+      - "5173:5173"
+    networks:
+      - nginx_websocket_network
+    depends_on:
+      - server1
+
+  client2:
+    build:
+      context: ./client2
+      dockerfile: Dockerfile.dev
+    container_name: websocket_client_chat_app
+    hostname: websocket_client_chat_app
+    ports:
+      - "5174:5173"
+    networks:
+      - nginx_websocket_network
+    depends_on:
+      - server2
+
+  server1:
+    build:
+      context: ./server1
+      dockerfile: Dockerfile.dev
+    container_name: websocket_server_1
+    hostname: websocket_server_1
+    ports:
+      - "9000:9000"
+    networks:
+      - nginx_websocket_network
+
+  server2:
+    build:
+      context: ./server2
+      dockerfile: Dockerfile.dev
+    container_name: websocket_server_2
+    hostname: websocket_server_2
+    ports:
+      - "9001:9000"
+    networks:
+      - nginx_websocket_network
+
+networks:
+  nginx_websocket_network:
+    driver: bridge
