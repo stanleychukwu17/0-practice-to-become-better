@@ -1,0 +1,2 @@
+- create a Dockerfile for all directories
+- create the docker-compose to unite all men
