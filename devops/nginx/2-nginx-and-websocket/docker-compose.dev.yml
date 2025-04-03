@@ -7,12 +7,10 @@ services:
       dockerfile: Dockerfile.dev
     container_name: mouse_app_frontend
     hostname: mouse_app_frontend
-    ports:
-      - "5173:5173"
     networks:
       - nginx_websocket_network
     depends_on:
-      - server1
+      - mouse_app_backend
 
   chat_app_frontend:
     build:
@@ -20,12 +18,10 @@ services:
       dockerfile: Dockerfile.dev
     container_name: chat_app_frontend
     hostname: chat_app_frontend
-    ports:
-      - "5174:5173"
     networks:
       - nginx_websocket_network
     depends_on:
-      - server2
+      - chat_app_backend
 
   mouse_app_backend:
     build:
@@ -33,8 +29,6 @@ services:
       dockerfile: Dockerfile.dev
     container_name: mouse_app_backend
     hostname: mouse_app_backend
-    ports:
-      - "9000:9000"
     networks:
       - nginx_websocket_network
 
@@ -44,10 +38,24 @@ services:
       dockerfile: Dockerfile.dev
     container_name: chat_app_backend
     hostname: chat_app_backend
-    ports:
-      - "9001:9000"
     networks:
       - nginx_websocket_network
+
+  nginx_loadbalancer:
+    image: nginx:1.27.4
+    container_name: nginx_loadbalancer
+    hostname: nginx_loadbalancer
+    ports:
+      - "80:90"
+    networks:
+      - nginx_websocket_network
+    volumes:
+      - "D:/Sz - projects/0-practice/devops/nginx/2-nginx-and-websocket/nginx.dev.conf:/etc/nginx/nginx.conf:ro"
+    depends_on:
+      - chat_app_frontend
+      - chat_app_backend
+      - mouse_app_frontend
+      - mouse_app_backend
 
 networks:
   nginx_websocket_network:
