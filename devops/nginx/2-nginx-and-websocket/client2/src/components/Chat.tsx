@@ -58,7 +58,7 @@ const arr: eachChatProps[] = new Array(3).fill({
 function Chat ({userDetails}: chatProps) {
     const [msgToSend, setMsgToSend] = useState<string>('')
     const { username, uuid } = userDetails
-    const WS_URL = "ws://localhost:9000" // websocket url
+    const WS_URL = "ws://localhost/api/chat" // websocket url
     const [allChats, setAllChats] = useState<allChatProps>([])
     // const [newChat, setNewChat] = useState<[]>([])
 
