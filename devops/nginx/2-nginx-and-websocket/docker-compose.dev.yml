@@ -1,12 +1,12 @@
 version: "3.8"
 
 services:
-  client1:
+  mouse_app_frontend:
     build:
       context: ./client1
       dockerfile: Dockerfile.dev
-    container_name: websocket_client_mouse_app
-    hostname: websocket_client_mouse_app
+    container_name: mouse_app_frontend
+    hostname: mouse_app_frontend
     ports:
       - "5173:5173"
     networks:
@@ -14,12 +14,12 @@ services:
     depends_on:
       - server1
 
-  client2:
+  chat_app_frontend:
     build:
       context: ./client2
       dockerfile: Dockerfile.dev
-    container_name: websocket_client_chat_app
-    hostname: websocket_client_chat_app
+    container_name: chat_app_frontend
+    hostname: chat_app_frontend
     ports:
       - "5174:5173"
     networks:
@@ -27,23 +27,23 @@ services:
     depends_on:
       - server2
 
-  server1:
+  mouse_app_backend:
     build:
       context: ./server1
       dockerfile: Dockerfile.dev
-    container_name: websocket_server_1
-    hostname: websocket_server_1
+    container_name: mouse_app_backend
+    hostname: mouse_app_backend
     ports:
       - "9000:9000"
     networks:
       - nginx_websocket_network
 
-  server2:
+  chat_app_backend:
     build:
       context: ./server2
       dockerfile: Dockerfile.dev
-    container_name: websocket_server_2
-    hostname: websocket_server_2
+    container_name: chat_app_backend
+    hostname: chat_app_backend
     ports:
       - "9001:9000"
     networks:
