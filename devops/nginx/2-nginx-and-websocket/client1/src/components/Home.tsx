@@ -21,7 +21,7 @@ const throttleTime = 50
 
 export default function Home({username}: HomeProps) {
     const [messages, setMessages] = useState<receivedMessagesType>({})
-    const WS_URL = "ws://localhost:9000" // websocket url
+    const WS_URL = "ws://localhost/api/mouse_moves" // websocket url
 
     // establishes a new websocket connection
     // sendJsonMessage is returned for the new websocket connection
