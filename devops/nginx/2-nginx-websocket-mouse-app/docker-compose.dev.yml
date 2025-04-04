@@ -46,7 +46,7 @@ services:
     container_name: nginx_loadbalancer
     hostname: nginx_loadbalancer
     ports:
-      - "80:90"
+      - "80:80"
     networks:
       - nginx_websocket_network
     volumes:

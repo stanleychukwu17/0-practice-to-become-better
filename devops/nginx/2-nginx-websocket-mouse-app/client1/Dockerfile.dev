@@ -12,7 +12,9 @@ RUN npm install
 
 RUN npm install nodemon
 
-USER app
+# USER app
+
+COPY --chown=app:app . ./
 
 EXPOSE 5173
 
