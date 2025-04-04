@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile.dev
     container_name: mouse_app_frontend
     hostname: mouse_app_frontend
+    # ports:
+    #   - "5173:5173"
     networks:
       - nginx_mouse_app_network
     depends_on:
@@ -18,6 +20,8 @@ services:
       dockerfile: Dockerfile.dev
     container_name: mouse_app_backend
     hostname: mouse_app_backend
+    # ports:
+    #   - "9000:9000"
     networks:
       - nginx_mouse_app_network
 
@@ -26,7 +30,8 @@ services:
     container_name: nginx_loadbalancer
     hostname: nginx_loadbalancer
     ports:
-      - "80:80"
+      - "7000:7000"
+      - "8000:8000"
     networks:
       - nginx_mouse_app_network
     volumes:
