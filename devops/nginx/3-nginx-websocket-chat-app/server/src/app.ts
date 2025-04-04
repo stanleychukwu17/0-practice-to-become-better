@@ -23,6 +23,8 @@ const users: {
 // sends the latest message received to everyone connected to the websocket
 const handleMessageReceived = (msg_in_bytes: string, username: string, new_msg_user_id: string) => {
     const message = JSON.parse(msg_in_bytes.toString())
+    // console.log("new message", message)
+
     Object.keys(connections).forEach((user_id) => {
         const toSend = { uuid: new_msg_user_id, username, msg: message.msg }
         connections[user_id].send(JSON.stringify(toSend))
