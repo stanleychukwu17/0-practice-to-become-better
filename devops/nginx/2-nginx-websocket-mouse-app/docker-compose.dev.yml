@@ -3,7 +3,7 @@ version: "3.8"
 services:
   mouse_app_frontend:
     build:
-      context: ./client1
+      context: ./client
       dockerfile: Dockerfile.dev
     container_name: mouse_app_frontend
     hostname: mouse_app_frontend
@@ -12,32 +12,12 @@ services:
     depends_on:
       - mouse_app_backend
 
-  chat_app_frontend:
-    build:
-      context: ./client2
-      dockerfile: Dockerfile.dev
-    container_name: chat_app_frontend
-    hostname: chat_app_frontend
-    networks:
-      - nginx_websocket_network
-    depends_on:
-      - chat_app_backend
-
   mouse_app_backend:
     build:
       context: ./server1
       dockerfile: Dockerfile.dev
     container_name: mouse_app_backend
     hostname: mouse_app_backend
-    networks:
-      - nginx_websocket_network
-
-  chat_app_backend:
-    build:
-      context: ./server2
-      dockerfile: Dockerfile.dev
-    container_name: chat_app_backend
-    hostname: chat_app_backend
     networks:
       - nginx_websocket_network
 
@@ -50,10 +30,8 @@ services:
     networks:
       - nginx_websocket_network
     volumes:
-      - "D:/Sz - projects/0-practice/devops/nginx/2-nginx-and-websocket/nginx.dev.conf:/etc/nginx/nginx.conf:ro"
+      - "D:/Sz - projects/0-practice/devops/nginx/2-nginx-websocket-mouse-app:/etc/nginx/nginx.conf:ro"
     depends_on:
-      - chat_app_frontend
-      - chat_app_backend
       - mouse_app_frontend
       - mouse_app_backend
 
