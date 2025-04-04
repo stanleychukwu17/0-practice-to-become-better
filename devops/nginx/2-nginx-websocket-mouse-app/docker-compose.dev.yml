@@ -14,7 +14,7 @@ services:
 
   mouse_app_backend:
     build:
-      context: ./server1
+      context: ./server
       dockerfile: Dockerfile.dev
     container_name: mouse_app_backend
     hostname: mouse_app_backend
@@ -30,7 +30,7 @@ services:
     networks:
       - nginx_mouse_app_network
     volumes:
-      - "D:/Sz - projects/0-practice/devops/nginx/2-nginx-websocket-mouse-app:/etc/nginx/nginx.conf:ro"
+      - "D:/Sz - projects/0-practice/devops/nginx/2-nginx-websocket-mouse-app/nginx.dev.conf:/etc/nginx/nginx.conf:ro"
     depends_on:
       - mouse_app_frontend
       - mouse_app_backend
