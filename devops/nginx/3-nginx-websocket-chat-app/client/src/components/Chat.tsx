@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import useWebSocket from "react-use-websocket"
 import { userType } from "../App";
 
@@ -19,7 +19,7 @@ type allChatProps = eachChatProps[]
 const OthersMessage = ({username, msg}: eachChatProps) => {
     return (
         <div className="Not_Me">
-            <div className="avatar">S</div>
+            <div className="avatar">{username[0]}</div>
             <div className="msg_cvr">
                 <div className="msg_dts">
                     {msg}
@@ -48,23 +48,23 @@ const MyMessage = ({username, msg}: eachChatProps) => {
     )
 }
 
-const arr: eachChatProps[] = new Array(3).fill({
-    uuid: 'string',
-    username: 'stanley edward',
-    msg: 'stanley',
-    owner: false
- });
+// const arr: eachChatProps[] = new Array(3).fill({
+//     uuid: 'string',
+//     username: 'stanley edward',
+//     msg: 'stanley',
+//     owner: false
+//  });
 
 function Chat ({userDetails}: chatProps) {
     const [msgToSend, setMsgToSend] = useState<string>('')
     const { username, uuid } = userDetails
-    const WS_URL = "ws://localhost/api/chat" // websocket url
+    const WS_URL = "ws://localhost:8000" // websocket url
     const [allChats, setAllChats] = useState<allChatProps>([])
     // const [newChat, setNewChat] = useState<[]>([])
 
-    useEffect(() => {
-        setAllChats(arr)
-    }, [])
+    // useEffect(() => {
+    //     setAllChats(arr)
+    // }, [])
 
     // establishes a new websocket connection "sendJsonMessage" functions is returned,
     // we will use it to send json messages to websocket server
