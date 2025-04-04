@@ -38,7 +38,7 @@ const broadcast = () => {
     Object.keys(connections).forEach(uuid => {
         const connection = connections[uuid]
 
-        // console.log("sending", JSON.stringify(users))
+        console.log("sending", JSON.stringify(users))
         connection.send(JSON.stringify(users))
     })
 }
@@ -55,7 +55,7 @@ const updateUserCursor = (message_in_bytes: string, uuid: string) => {
     const new_cursor_position: userType[typeof uuid]['cursor'] = JSON.parse(message_in_bytes.toString())
     const user = users[uuid]
     user.cursor = new_cursor_position
-    // console.log("see message received", message)
+    console.log("see message received", new_cursor_position)
 
     // sends the update cursor position to all users
     broadcast()
@@ -80,7 +80,7 @@ wsServer.on("connection", (connection, request: http.IncomingMessage) => {
 
     const {username} = url.parse(request.url!, true).query
     const uuid = uuidV4()
-    // console.log(username, uuid)
+    console.log("Connected: ", {username}, {uuid})
 
     // if the request looks something like ?username=stanley&username=mike, we reject the connection request
     // we only want one username per connection
