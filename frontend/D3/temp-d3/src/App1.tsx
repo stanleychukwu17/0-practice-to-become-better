@@ -1,7 +1,0 @@
-import './App1.css'
-
-export default function App1() {
-    return (
-        <div>App1</div>
-    )
-}
