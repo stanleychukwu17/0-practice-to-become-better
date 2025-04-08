@@ -1,4 +1,4 @@
-import BarChart1 from '../BarChart/BarChart1'
+import BarChart from '../BarChart/BarChart'
 
 const sampleData = [
     { name: "A", value: 30 },
@@ -12,7 +12,7 @@ export default function App1() {
     return (
         <div>
             <h2>Bar Chart with D3 & React</h2>
-            <BarChart1 data={sampleData} width={500} height={500} />
+            <BarChart data={sampleData} width={500} height={500} />
         </div>
     )
 }
