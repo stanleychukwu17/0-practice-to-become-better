@@ -1,36 +1,27 @@
 # Simple BarChart with D3
 
-1. pnpm/npm install packages
+1. start the server: pnpm/npm dev
 
-2. create src/components/App1.tsx
-    - add a header "Bar Chart with D3 & React"
-    - insert into main.tsx
-    - start the server to see all is well (pnpm/npm dev)
+2. the code is located in the src/components/BarChart/BarChart1.tsx
+    - we want a similar result to BarChart.tsx
+    - you can read note on animation: [note](./note.txt)
+    - carry on with your animating the bars
 
-3. create your src/components/BarChart/BarChart1.tsx file
-    - import and use in App.tsx
-    - send the following data into the BarChart1 comp
-      ```ts
-        const sampleData = [
-            { name: "A", value: 30 },
-            { name: "B", value: 80 },
-            { name: "C", value: 45 },
-            { name: "D", value: 60 },
-            { name: "E", value: 20 }
-        ];
-      ```
-    - also send the width and height of the svg into the BarChart1.tsx
-    - start working on your barChart
-
-4. test that everything works fine
+3. test that everything works fine
     - commit all changes made to github
 
 5. clean up
-    - shut down the server
+    - take the code in BarChart1.tsx back to Default.tsx
     - delete App1.tsx, BarChart1.tsx, node_modules
+    - commit all changes after clean up
 
 <br>
 <br>
 
 # Final result should look like:
-![Bar Chart Image](./barchart.png)
+hover over the video link to watch the video
+
+<video width="640" height="360" controls>
+  <source src="barChart-animated.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
