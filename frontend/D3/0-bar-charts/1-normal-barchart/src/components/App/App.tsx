@@ -1,4 +1,4 @@
-import BarChart from './components/BarChart/BarChart'
+import BarChart from '../BarChart/BarChart'
 
 const sampleData = [
     { name: "A", value: 30 },
