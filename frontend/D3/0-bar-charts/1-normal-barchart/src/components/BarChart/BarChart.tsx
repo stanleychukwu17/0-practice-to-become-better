@@ -27,7 +27,7 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
 
     // Scales
     const xScale = d3
-      .scaleBand()
+      .scaleBand<string>()
       .domain(data.map((d) => d.name)) // [A, B, C, D, E]
       .range([0, chartWidth])
       .padding(0.1);
