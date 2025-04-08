@@ -50,10 +50,15 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
       .enter()
       .append("rect")
       .attr("x", (d) => xScale(d.name) as unknown as string )
-      .attr("y", (d) => yScale(d.value))
+      .attr("y", chartHeight)
       .attr("width", xScale.bandwidth())
+      .attr("height", 0)
+      .attr("fill", "pink")
+      .transition()
+      .duration(800)
+      .delay((_, i) => i * 300) // where _ = d, but since we're not using it, we replace it with _
+      .attr("y", (d) => yScale(d.value) )
       .attr("height", (d) => chartHeight - yScale(d.value))
-      .attr("fill", "steelblue");
 
     // X Axis
     chart
