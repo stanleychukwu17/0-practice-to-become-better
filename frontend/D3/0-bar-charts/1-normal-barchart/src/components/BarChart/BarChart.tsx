@@ -59,10 +59,11 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
     chart
       .append("g")
       .attr("transform", `translate(0, ${chartHeight})`)
-      .call(d3.axisBottom(xScale));
+      .call(d3.axisBottom(xScale))
+      .attr("color", "black");
 
     // Y Axis
-    chart.append("g").call(d3.axisLeft(yScale));
+    chart.append("g").call(d3.axisLeft(yScale)).attr("color", "black");
 
   }, [data, height, width])
 
