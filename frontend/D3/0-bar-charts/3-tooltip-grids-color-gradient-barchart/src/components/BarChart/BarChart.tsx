@@ -27,12 +27,6 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
     const chartWidth = width - margin.left - margin.right;
     const chartHeight = height - margin.top - margin.bottom;
 
-    // Tooltip
-    const tooltip = d3
-      .select(containerRef.current)
-      .append("div")
-      .attr("class", "tooltip-card")
-
     // Scales
     const xScale = d3
       .scaleBand<string>()
@@ -45,6 +39,12 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
       .domain([0, d3.max(data, (d) => d.value) as number]) // you can also do: .domain([0, d3.max(data, (d) => d.value) || 0])
       .nice()
       .range([chartHeight, 0]);
+
+    // Tooltip
+    const tooltip = d3
+      .select(containerRef.current)
+      .append("div")
+      .attr("class", "tooltip-card")
 
     // Gradient
     const defs = svg.append("defs");
