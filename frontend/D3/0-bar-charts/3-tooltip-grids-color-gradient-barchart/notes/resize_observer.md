@@ -1,9 +1,6 @@
 **ResizeObserver**
 <br>
-  ResizeObserver is a browser API that lets you watch an element and get notified whenever its size (width/height) changes. <br>
-  Not everything triggers a window.resize event. That’s where ResizeObserver comes in It’s super useful for responsive layouts, <br>
-  custom components. Once there is a change in the size of the element/component, you'll be notified. <br>
-
+  ResizeObserver is a browser API that lets you watch an element and get notified whenever its size (width/height) changes.
 <br>
 
 ```ts
