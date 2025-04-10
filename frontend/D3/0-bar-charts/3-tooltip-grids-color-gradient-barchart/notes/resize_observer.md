@@ -35,3 +35,24 @@
 - entry.target: the observed element
 - entry.contentRect: an object with .width, .height, etc.
 - entry.borderBoxSize, entry.contentBoxSize: more detailed box info (useful for complex cases)
+
+## using useRef
+
+```ts
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [dimensions, setDimensions] = useState({ width: 500, height: 300 });
+
+  useEffect(() => {
+    const observer = new ResizeObserver((entries) => {
+      const entry = entries[0];
+      const { width } = entry.contentRect;
+      setDimensions({ width, height: 300 });
+    });
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+```
