@@ -1,5 +1,6 @@
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
+import "./BarChart.css";
 
 type DataPoint = {
   name: string;
@@ -13,6 +14,7 @@ type BarChartProps = {
 };
 
 export default function BarChart({data, width = 500, height = 300} : BarChartProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
   const svgRef = useRef<SVGSVGElement>(null)
 
   useEffect(() => {
@@ -24,6 +26,12 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
     const margin = { top: 20, right: 20, bottom: 50, left: 50 };
     const chartWidth = width - margin.left - margin.right;
     const chartHeight = height - margin.top - margin.bottom;
+
+    // Tooltip
+    const tooltip = d3
+      .select(containerRef.current)
+      .append("div")
+      .attr("class", "tooltip-card")
 
     // Scales
     const xScale = d3
@@ -38,10 +46,54 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
       .nice()
       .range([chartHeight, 0]);
 
+    // Gradient
+    const defs = svg.append("defs");
+    const gradient = defs
+      .append("linearGradient")
+      .attr("id", "bar-gradient")
+      .attr("x1", "0%")
+      .attr("y1", "0%")
+      .attr("x2", "0%")
+      .attr("y2", "100%");
+    gradient
+      .append("stop")
+      .attr("offset", "0%")
+      .attr("stop-color", "#4facfe");
+    gradient
+      .append("stop")
+      .attr("offset", "100%")
+      .attr("stop-color", "#00f2fe");
+
     // create a group element for the charts
     const chart = svg
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // Grid-lines for x-axis using the y-axis ticks
+    chart
+      .append("g")
+      .attr("class", "grid")
+      .call(
+        d3
+          .axisLeft(yScale)
+          .tickSize(-chartWidth)
+          .tickFormat(() => "")
+      )
+      .selectAll("line")
+      .attr("stroke", "#e0e0e0");
+
+    // Grid-lines for y-axis using the x-axis ticks
+    chart
+      .append("g")
+      .attr("class", "grid")
+      .call(
+        d3
+          .axisBottom(xScale)
+          .tickSize(chartHeight)
+          .tickFormat(() => "")
+      )
+      .selectAll("line")
+      .attr("stroke", "#e0e0e0");
 
     // Bars
     chart
@@ -53,7 +105,23 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
       .attr("y", chartHeight)
       .attr("width", xScale.bandwidth())
       .attr("height", 0)
-      .attr("fill", "pink")
+      // .attr("fill", "pink")
+      .attr("fill", "url(#bar-gradient)")
+      .on("mouseenter", (event, d) => {
+        tooltip
+          .style("opacity", 1)
+          .html(`<strong>${d.name}</strong>: ${d.value}`)
+          .style("left", `${event.offsetX + 10}px`)
+          .style("top", `${event.offsetY - 30}px`);
+      })
+      .on("mousemove", (event) => {
+        tooltip
+          .style("left", `${event.offsetX + 10}px`)
+          .style("top", `${event.offsetY - 30}px`);
+      })
+      .on("mouseleave", () => {
+        tooltip.style("opacity", 0);
+      })
       .transition()
       .duration(800)
       .delay((_, i) => i * 300) // where _ = d, but since we're not using it, we replace it with _
@@ -73,7 +141,7 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
   }, [data, height, width])
 
   return (
-    <div style={{ minWidth:"500px", maxWidth:"800px", width: "100%", height: "auto" }}>
+    <div ref={containerRef} style={{ minWidth:"500px", maxWidth:"800px", width: "100%", height: "auto" }}>
       <svg
         ref={svgRef}
         viewBox={`0 0 ${width} ${height}`}
