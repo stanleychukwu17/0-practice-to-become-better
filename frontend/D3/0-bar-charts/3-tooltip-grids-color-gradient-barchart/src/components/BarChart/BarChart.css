@@ -1,0 +1,10 @@
+.tooltip-card {
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  position: absolute;
+  padding: 6px 10px;
+  border-radius: 4px;
+  pointer-events: none;
+  font-size: 13px;
+  opacity: 1;
+}
