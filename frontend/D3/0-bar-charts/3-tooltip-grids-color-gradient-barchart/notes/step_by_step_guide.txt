@@ -1,35 +1,47 @@
-This is a rough guide to creating your BarChart, you should at-least be familiar with D3 and it's methods
+This is a rough guide to creating a Bar Chart, you be familiar with how D3 before using this guide
 
-1. Create your BarChart component and your svg element
-  - let the svg element be responsive - {you can look at code, no need to memorize}
+1. Create your BarChart react component and return your svg element
+  - your component should receive 3 arguments
+    1. data, something like below:
+      const sampleData = [
+        { name: "A", value: 30 },
+        { name: "B", value: 80 },
+        { name: "C", value: 45 },
+        { name: "D", value: 60 },
+        { name: "E", value: 20 }
+      ];
+    2. width (i.e the width for your chart)
+    3. height (i.e the height for your chart)
 
-2. Add your svg ref and container ref
-  - next, you need a useEffect
+  - let the svg element be responsive - {you can look at the sample code, no need to memorize}
+  - Add your svg ref and container ref
+  - bring in your useEffect hook and let the magic begin
 
-3. Select the svg element and remove all previous renders
+2. Select the svg element and remove all previous renders
 
-4. work on the margins and use it to calculate the chartWidth and chartHeight
+3. work on the margins and use it to calculate the chartWidth and chartHeight
 
-5. using the chartWidth, create your xScale
-6. using the chartHeight, create your yScale
+4. using the chartWidth, create your xScale
+5. using the chartHeight, create your yScale
 
-7. append the tooltip element to the container, add a "class" with value "tooltip-card"
+6. append the tooltip element to the container, add a "class" with value "tooltip-card"
+  - add a style: make the opacity: 0
 
-8. create the "gradient defs" in the svg {you can look at code, no need to memorize}
+7. create the "gradient defs" in the svg {you can look at the sample code, no need to memorize}
 
-9. Start work on the chart, create a "group" element for the chart
+8. Start work on the chart, create a "group" element for the chart
 
-10. Optional: Add grid-lines to the chart
+9. Optional: Add grid-lines to the chart
   - for the x-axis, use y-axis ticks
   - for the y-axis, use x-axis ticks
 
-11. Create your bars using "rect" element
+10. Create your bars using "rect" element
   - bind data to the rect
   - create new rect, if enough rect do not exist
-  - fill the bar with the gradient created
+  - fill the bar with the "gradient defs" we created
   - add event listeners to show/hide the tooltip for each bar
-    - mouse-enter, mouse-move, mouse-leave
+    - when we: mouse-enter, mouse-move, mouse-leave
   - using transition animate the y-position and the height of the bars
 
-12. Create the x-axis and y-axis with their labels
+11. Create the x-axis and y-axis with their labels
 
