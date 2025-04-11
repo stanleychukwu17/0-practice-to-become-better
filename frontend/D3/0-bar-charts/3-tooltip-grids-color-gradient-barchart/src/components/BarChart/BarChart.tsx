@@ -45,6 +45,7 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
       .select(containerRef.current)
       .append("div")
       .attr("class", "tooltip-card")
+      .style("opacity", 0);
 
     // Gradient
     const defs = svg.append("defs");
@@ -81,6 +82,17 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
       )
       .selectAll("line")
       .attr("stroke", "#e0e0e0");
+
+    /* Another way to create grid-lines
+      const xGridLine = chart.append("g").attr("class", "x-grid")
+      xGridLine.call(
+          d3
+            .axisLeft(yScale)
+            .tickSize(-chartWidth)
+            .tickFormat(() => "")
+        )
+      xGridLine.selectAll("line").attr("stroke", "#e0e0e0")  
+    */
 
     // Grid-lines for y-axis using the x-axis ticks
     chart
@@ -124,7 +136,9 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
       })
       .transition()
       .duration(800)
-      .delay((_, i) => i * 300) // where _ = d, but since we're not using it, we replace it with _
+      // below: where _ = d, but since we're not using it, we replace it with _ ; i = index;
+      // i * 300 = delay in ms; teacher did i * 100; but i prefer 300 
+      .delay((_, i) => i * 300)
       .attr("y", (d) => yScale(d.value) )
       .attr("height", (d) => chartHeight - yScale(d.value))
 
