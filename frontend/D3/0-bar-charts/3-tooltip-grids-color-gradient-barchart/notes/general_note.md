@@ -134,8 +134,7 @@ After we created the xScale and yScale, we added the following code:
 ```
 
 
-# Brining it all together:
-
+# **5. Brining it all together**:
 
 ```ts
   // Bars
@@ -172,3 +171,20 @@ After we created the xScale and yScale, we added the following code:
     .attr("y", (d) => yScale(d.value))
     .attr("height", (d) => chartHeight - yScale(d.value));
 ```
+
+# **Extra explanations**:
+
+```ts
+  const yScale = d3
+    .scaleLinear()
+    .domain([0, d3.max(data, (d) => d.value) as number])
+    .range([chartHeight, 0]);
+```
+why .range([chartHeight, 0]); for y-axis?
+- When you use .range([chartHeight, 0]), you are essentially mapping the domain values (which are typically data points, e.g., numbers or categories) to a reverse Y-axis.
+- This makes sense because, in most cases, when you plot data on a vertical axis (Y-axis), higher values in the domain should be positioned higher up on the screen, and lower values should be positioned lower. <br>
+    Example: <br>
+    If you had a chart with a height of 500px, and your data domain was [0, 100]:
+    With .range([chartHeight(i.e 500px), 0]):
+    A value of 0 in the domain would map to 500px (bottom of the chart).
+    A value of 100 would map to 0px (top of the chart).
