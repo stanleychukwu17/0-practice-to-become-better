@@ -1,10 +1,3 @@
-In this project we added: <br>
-  ✅ Dynamic resizing using ResizeObserver <br>
-  ✅ Hover tooltips <br>
-  ✅ Grid-lines <br>
-  ✅ Bar color gradients
-
-<br>
 
 # **1. ResizeObserver**:
 <br>
