@@ -12,7 +12,6 @@ This is a rough guide to creating a Bar Chart, you be familiar with how D3 befor
       ];
     2. width (i.e the width for your chart)
     3. height (i.e the height for your chart)
-
   - let the svg element be responsive - {you can look at the sample code, no need to memorize}
   - Add your svg ref and container ref
   - bring in your useEffect hook and let the magic begin
@@ -30,8 +29,10 @@ This is a rough guide to creating a Bar Chart, you be familiar with how D3 befor
 7. create the "gradient defs" in the svg {you can look at the sample code, no need to memorize}
 
 8. Start work on the chart, create a "group" element for the chart
+  - move the <g> element: on the x-axis, use margin.left, on the y-axis, use margin.top 
 
 9. Optional: Add grid-lines to the chart
+  - tip, add a separate group for the ticks
   - for the x-axis, use y-axis ticks
   - for the y-axis, use x-axis ticks
 
