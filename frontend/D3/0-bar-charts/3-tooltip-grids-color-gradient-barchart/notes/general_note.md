@@ -60,6 +60,7 @@ The tooltip is a small card that pops out anytime we hover on any of the rect, s
   const tooltip = d3.select(svgParentRef)
     .append("div")
     .attr("class", "chartBar_tooltip")
+    // moved all of the inline-styling to the css file
 ```
 
 <br>
@@ -77,7 +78,7 @@ Adding the grid-line is a bit straight forward, see the code:
   // create a group for the grid-lines and use .call to add the grid-lines to the group
   chart
     .append("g")
-    .attr("class", "grid")
+    .attr("class", "x-grid")
     .call(
       d3
         .axisLeft(yScale)
