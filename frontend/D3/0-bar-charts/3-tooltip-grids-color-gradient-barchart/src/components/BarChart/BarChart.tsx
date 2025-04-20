@@ -16,6 +16,7 @@ type BarChartProps = {
 export default function BarChart({data, width = 500, height = 300} : BarChartProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const svgRef = useRef<SVGSVGElement>(null)
+  const gradientColor = useRef({starting:'#4facfe', ending:'#00f2fe'})
 
   useEffect(() => {
     if (!svgRef.current) return
@@ -59,11 +60,11 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
     gradient
       .append("stop")
       .attr("offset", "0%")
-      .attr("stop-color", "#4facfe");
+      .attr("stop-color", gradientColor.current.starting);
     gradient
       .append("stop")
       .attr("offset", "100%")
-      .attr("stop-color", "#00f2fe");
+      .attr("stop-color", gradientColor.current.ending);
 
     // create a group element for the charts
     const chart = svg
@@ -73,11 +74,11 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
     // Grid-lines for x-axis using the y-axis ticks
     chart
       .append("g")
-      .attr("class", "grid")
+      .attr("class", "x-grid")
       .call(
         d3
           .axisLeft(yScale)
-          .tickSize(-chartWidth)
+          .tickSize(-chartWidth) // tickSize is the length of the tick, see general_note.md for more
           .tickFormat(() => "")
       )
       .selectAll("line")
@@ -97,11 +98,11 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
     // Grid-lines for y-axis using the x-axis ticks
     chart
       .append("g")
-      .attr("class", "grid")
+      .attr("class", "y-grid")
       .call(
         d3
           .axisBottom(xScale)
-          .tickSize(chartHeight)
+          .tickSize(chartHeight) // tickSize is the length of the tick, see general_note.md for more
           .tickFormat(() => "")
       )
       .selectAll("line")
@@ -111,28 +112,37 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
     chart
       .selectAll("rect")
       .data(data)
-      .enter()
-      .append("rect")
+      .join("rect")
       .attr("x", (d) => xScale(d.name) as unknown as string )
       .attr("y", chartHeight)
       .attr("width", xScale.bandwidth())
       .attr("height", 0)
-      // .attr("fill", "pink")
       .attr("fill", "url(#bar-gradient)")
-      .on("mouseenter", (event, d) => {
+      //@ts-expect-error - the callback function below is valid
+      // but if we used .enter().append() instead of .join("rect"), there will be no errors
+      .on("mouseenter", function (this: SVGElement, event, d) {
+        // display the tooltip and its content
         tooltip
           .style("opacity", 1)
           .html(`<strong>${d.name}</strong>: ${d.value}`)
           .style("left", `${event.offsetX + 10}px`)
           .style("top", `${event.offsetY - 30}px`);
+        
+        // change the bar color
+        d3.select(this).attr("fill", gradientColor.current.ending);
       })
       .on("mousemove", (event) => {
         tooltip
           .style("left", `${event.offsetX + 10}px`)
           .style("top", `${event.offsetY - 30}px`);
       })
-      .on("mouseleave", () => {
+      //@ts-expect-error - the callback function below is valid
+      .on("mouseleave", function(this: SVGElement) {
+        // hides the tooltip
         tooltip.style("opacity", 0);
+
+        // takes the color back to the gradient
+        d3.select(this).attr("fill", "url(#bar-gradient)")
       })
       .transition()
       .duration(800)
