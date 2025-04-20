@@ -88,8 +88,7 @@ Adding the grid-line is a bit straight forward, see the code:
     .selectAll("line")
     .attr("stroke", "#e0e0e0");
 ```
-so with the grid lines, you see that when we created the group where we would place the grid-lines,<br>
-we did:
+so with the grid lines, you see that when we created the group for the grid-lines, we did:<br>
 
 ```ts
   d3.axisLeft(yScale)
@@ -107,6 +106,9 @@ we did:
   - But now using chartWidth as the width of the ticks will make each tick line extend horizontally across the full width of the chart
   - So instead of just tiny ticks, you now get full-length horizontal lines — i.e: grid lines
   - Why negative (i.e -chartWidth)? Because .axisLeft means the axis is on the left side and by default tick lines <br> are drawn to the left and to draw grid lines into the chart, they need to go left to right, which is negative for D3 axes
+  - for the following: <br>
+    .axisLeft() & .axisTop(): you need to do {-value} to draw into the chart
+    .axisBottom() & .axisRight(): you need to do {value}, to draw into the chart, not {-value}
 
 **3. .tickSize(-chartWidth):**
   - .tickFormat() is used to format the tick labels. By default, this function would display labels on the ticks. <br>
