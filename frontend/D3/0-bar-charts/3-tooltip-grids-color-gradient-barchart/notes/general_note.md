@@ -110,7 +110,7 @@ so with the grid lines, you see that when we created the group for the grid-line
     .axisLeft() & .axisTop(): you need to do {-value} to draw into the chart
     .axisBottom() & .axisRight(): you need to do {value}, to draw into the chart, not {-value}
 
-**3. .tickSize(-chartWidth):**
+**3. .tickFormat(() => ""):**
   - .tickFormat() is used to format the tick labels. By default, this function would display labels on the ticks. <br>
   - But returning an empty string removes the text labels (i.e., tick values like 0, 20, 40).
   - Result: just the grid lines, no numbers.
