@@ -41,7 +41,14 @@ This is a rough guide to creating a Bar Chart, you be familiar with how D3 befor
   - create new rect, if enough rect do not exist
   - fill the bar with the "gradient defs" we created
   - add event listeners to show/hide the tooltip for each bar
-    - when we: mouse-enter, mouse-move, mouse-leave
+    - when we: mouse-enter
+      - show the tooltip, show a custom message, move the tooltip to wherever the mouse is
+      - change the fill color of the rectangle to "orange"
+    - mouse-move
+      - continue to move the tooltip to the position of the mouse
+    - mouse-leave
+      - hide the tooltip
+      - return the fill color back to the gradient we created
   - using transition animate the y-position and the height of the bars
 
 11. Create the x-axis and y-axis with their labels
