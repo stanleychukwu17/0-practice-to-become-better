@@ -119,7 +119,7 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
       .attr("height", 0)
       .attr("fill", "url(#bar-gradient)")
       //@ts-expect-error - the callback function below is valid
-      // but if we used .enter().append() instead of .join("rect"), there will be no errors
+      // if we used .enter().append("rect") instead of .join("rect"), there will be no errors
       .on("mouseenter", function (this: SVGElement, event, d) {
         // display the tooltip and its content
         tooltip
