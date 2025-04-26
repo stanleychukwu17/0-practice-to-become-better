@@ -29,7 +29,7 @@ This is a rough guide to creating a Bar Chart, you be familiar with how D3 befor
 7. create the "gradient defs" in the svg {you can look at the sample code, no need to memorize}
 
 8. Start work on the chart, create a "group" element for the chart
-  - move the <g> element: on the x-axis, use margin.left, on the y-axis, use margin.top 
+  - move the <g> element: on the x-axis, use margin.left, on the y-axis, use margin.top
 
 9. Optional: Add grid-lines to the chart
   - tip, add a separate group for the ticks
