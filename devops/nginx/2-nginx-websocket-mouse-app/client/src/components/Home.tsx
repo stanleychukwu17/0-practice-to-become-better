@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useState } from "react"
 import useWebSocket from "react-use-websocket"
-import throttle  from "lodash.throttle"
+import throttle from "lodash.throttle"
+
+// get the websocket url from the environment variable
+const websocketUrl = import.meta.env.VITE_API_URL;
+console.log(websocketUrl)
 
 type HomeProps = {
     username: string
@@ -18,10 +22,9 @@ type receivedMessagesType = {
 // throttle time in ms, we use 50ms for a smother experience
 const throttleTime = 50
 
-
 export default function Home({username}: HomeProps) {
     const [messages, setMessages] = useState<receivedMessagesType>({})
-    const WS_URL = "ws://localhost:8000/" // websocket url
+    const WS_URL = websocketUrl // websocket url
 
     // establishes a new websocket connection
     // sendJsonMessage is returned for the new websocket connection
@@ -45,8 +48,9 @@ export default function Home({username}: HomeProps) {
         // shouldReconnect is useful if you want to reconnect to the websocket server when the connection closes unexpectedly (e.g: maybe the server closes the connection)
         shouldReconnect: () => true,
         reconnectInterval: 1000, // in ms
-        reconnectAttempts: 20,
+        reconnectAttempts: 10,
     })
+
 
     // the throttle function is useful if you want to limit the number of messages sent to the websocket server
     // how it works: if the function is called multiple times within the throttle time, it will only call the function once
