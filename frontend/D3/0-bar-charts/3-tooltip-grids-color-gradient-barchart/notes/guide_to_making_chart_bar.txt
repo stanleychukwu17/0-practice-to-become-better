@@ -1,4 +1,4 @@
-This is a rough guide to creating a Bar Chart, you be familiar with how D3 before using this guide
+This is a rough guide to creating a Bar Chart, you should be familiar with how D3 works before using this guide
 
 1. Create your BarChart react component and return your svg element
   - your component should receive 3 arguments
@@ -32,7 +32,7 @@ This is a rough guide to creating a Bar Chart, you be familiar with how D3 befor
   - move the <g> element: on the x-axis, use margin.left, on the y-axis, use margin.top
 
 9. Optional: Add grid-lines to the chart
-  - tip, add a new group for each x-grid-lines and the y-grid-lines
+  - tip, add a new group for the x-grid-lines and the y-grid-lines
   - for the x-axis, use y-axis ticks
   - for the y-axis, use x-axis ticks
 
