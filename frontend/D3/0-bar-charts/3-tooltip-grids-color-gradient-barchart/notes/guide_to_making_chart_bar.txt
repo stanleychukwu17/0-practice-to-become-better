@@ -39,6 +39,7 @@ This is a rough guide to creating a Bar Chart, you should be familiar with how D
 10. Create your bars using "rect" element
   - bind data to the rect
   - create new rect, if enough rect do not exist
+  - work on the x, y, width and height of each rect
   - fill the bar with the "gradient defs" we created
   - add event listeners to show/hide the tooltip for each bar
     - when we: mouse-enter
@@ -52,4 +53,3 @@ This is a rough guide to creating a Bar Chart, you should be familiar with how D
   - using transition animate the y-position and the height of the bars
 
 11. Create the x-axis and y-axis with their labels
-
