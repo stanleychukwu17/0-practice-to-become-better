@@ -1,0 +1,1 @@
+the project generates random quotes
