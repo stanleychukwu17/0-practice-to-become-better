@@ -309,13 +309,13 @@
   ],
   "images": [
     {
-      "uri": "textures/FLOOR_baseColor.png"
+      "uri": "lime_green_textures/FLOOR_baseColor.png"
     },
     {
-      "uri": "textures/PEARL_GREY_baseColor.jpeg"
+      "uri": "lime_green_textures/PEARL_GREY_baseColor.jpeg"
     },
     {
-      "uri": "textures/EnvironmentAmbientLight_baseColor.jpeg"
+      "uri": "lime_green_textures/EnvironmentAmbientLight_baseColor.jpeg"
     }
   ],
   "materials": [

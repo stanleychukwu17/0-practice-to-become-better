@@ -309,13 +309,13 @@
   ],
   "images": [
     {
-      "uri": "textures/FLOOR_baseColor.png"
+      "uri": "grey_textures/FLOOR_baseColor.png"
     },
     {
-      "uri": "textures/PEARL_GREY_baseColor.jpeg"
+      "uri": "grey_textures/PEARL_GREY_baseColor.jpeg"
     },
     {
-      "uri": "textures/PEARL_GREY_metallicRoughness.png"
+      "uri": "grey_textures/PEARL_GREY_metallicRoughness.png"
     }
   ],
   "materials": [

@@ -309,13 +309,13 @@
   ],
   "images": [
     {
-      "uri": "textures/FLOOR_baseColor.png"
+      "uri": "candy_pink_textures/FLOOR_baseColor.png"
     },
     {
-      "uri": "textures/PEARL_GREY_baseColor.jpeg"
+      "uri": "candy_pink_textures/PEARL_GREY_baseColor.jpeg"
     },
     {
-      "uri": "textures/PEARL_GREY_metallicRoughness.png"
+      "uri": "candy_pink_textures/PEARL_GREY_metallicRoughness.png"
     }
   ],
   "materials": [
