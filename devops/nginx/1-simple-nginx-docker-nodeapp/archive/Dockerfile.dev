@@ -15,7 +15,7 @@ RUN npm install nodemon
 USER app
 
 COPY --chown=app:app . ./
-# RUN chown -r app:app /usr/src/app
+# RUN chown -R app:app /usr/src/app
 
 EXPOSE 4000
 
