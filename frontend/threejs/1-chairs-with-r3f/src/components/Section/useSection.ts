@@ -1,7 +1,5 @@
 import { useThree } from "@react-three/fiber";
-
 import useStore from "../../store/store";
-
 
 function useSection() {
   const offset = useStore((state) => state.offset)
@@ -20,7 +18,6 @@ function useSection() {
   const contentMaxWidth = canvasWidth * (mobile ? 0.8 : 0.6)
   const sectionHeight = canvasHeight * ((pages - 1) / (sections - 1))
   const aspect = size.height / viewportHeight
-
 
   return {
     aspect,
