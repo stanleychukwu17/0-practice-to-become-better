@@ -1,11 +1,13 @@
-import Task0 from "./components/Task0/Task0"
+// import Task0 from "./components/Task0/Task0"
+import Header from "./components/Header/Header"
 import './App.css'
 
 
 export default function App() {
   return (
     <div className="App">
-      <Task0 />
+      <Header />
+      {/* <Task0 /> */}
     </div>
   )
 }
