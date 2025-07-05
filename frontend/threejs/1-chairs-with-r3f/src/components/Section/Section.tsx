@@ -1,9 +1,8 @@
 import * as THREE from "three"
 import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
-import { useSection } from "./useSection"
+import { useSection, lerp } from "./useSection"
 import useStore from "../../store/store"
-import { lerp } from "three/src/math/MathUtils.js"
 
 type SectionProps = {
   children: React.ReactNode,
@@ -20,8 +19,7 @@ function Section({children, offset, factor, ...props}: SectionProps) {
 
   useFrame(() => {
     const curY = meshRef.current.position.y
-    // const curTop = state.top.current / aspect
-    const curTop = state.top / aspect
+    const curTop = state.top.current as number / aspect
     return meshRef.current.position.y = lerp(curY, (curTop/state.zoom) * factor, 0.1)
   })
 
