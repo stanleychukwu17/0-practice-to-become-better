@@ -1,11 +1,16 @@
 import { useThree } from "@react-three/fiber";
-import { useContext } from "react";
+
+import useStore from "../../store/store";
+
 
 function useSection() {
+  const offset = useStore((state) => state.offset)
+  const sections = useStore((state) => state.sections)
+  const pages = useStore((state) => state.pages)
+  const zoom = useStore((state) => state.zoom)
+
   // const {sections, pages, zoom} = state;
   const {size, viewport} = useThree();
-  // const offset = useContext(offsetContext)
-  const {width, height} = size
   const viewportWidth = viewport.width
   const viewportHeight = viewport.height
   const canvasWidth = viewportWidth / zoom
@@ -18,8 +23,17 @@ function useSection() {
 
 
   return {
-    size,
-    viewport
+    aspect,
+    viewport,
+    offset,
+    viewportWidth,
+    viewportHeight,
+    canvasWidth,
+    canvasHeight,
+    mobile,
+    margin,
+    contentMaxWidth,
+    sectionHeight,
   }
 }
 
