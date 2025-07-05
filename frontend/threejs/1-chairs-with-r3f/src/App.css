@@ -1,10 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Chela+One&family=Murecho:wght@100..900&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
 .App {
   display: block;
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 100vh;
-  /* background-color: #000; */
+  background-color: #030000;
+  font-optical-sizing: auto;
+  /* font-family: "Yatra One", system-ui; */
+  font-family: "Murecho", sans-serif;
+  /* font-family: "Chela One", system-ui; */
 }
 .three_Canvas {
   display: block;
