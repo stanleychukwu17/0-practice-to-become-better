@@ -1,4 +1,6 @@
-import { Canvas } from "@react-three/fiber"
+import { useRef } from "react"
+import * as THREE from 'three'
+import { Canvas, useFrame } from "@react-three/fiber"
 import {Html, useGLTF} from "@react-three/drei"
 import Section from "./components/Section/Section"
 import Header from "./components/Header/Header"
@@ -23,9 +25,15 @@ const LightsComp = () => {
 
 
 const HtmlComponent = () => {
+  const meshRef = useRef<THREE.Mesh>(null!);
+
+  useFrame((_state, delta) => {
+    return meshRef.current.rotation.y += delta / 2
+  })
+
   return(
     <Section offset={0} factor={1}>
-      <group position={[0, -20, 0]}>
+      <group ref={meshRef} position={[0, -20, 0]}>
         <ModelComp />
         <Html fullscreen>
           <div className="title">Hello</div>
