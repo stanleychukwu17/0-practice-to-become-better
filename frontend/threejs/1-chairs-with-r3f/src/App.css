@@ -18,10 +18,14 @@ a {
 }
 
 :root {
-  --bg-color: #030000;
-  --yellow: rgb(255, 255, 0);
+  /* --bg-color: #030000;
   --dark-yellow: #edc623;
-  --pink: #f9b7f8;
+  --pink: #f9b7f8; */
+
+  --bg-color: #fffaf6;
+  --dark-yellow: #3d8036;
+  --pink: #295434;
+  --last-green: #7cae6c;
 }
 .App {
   display: block;
