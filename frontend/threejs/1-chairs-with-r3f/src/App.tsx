@@ -6,8 +6,11 @@ import Section from "./components/Section/Section"
 import Header from "./components/Header/Header"
 import './App.css'
 
-const ModelComp = () => {
-  const gltf = useGLTF("/grey.gltf", true)
+type ModelCompProps = {
+  modelPath: string
+}
+const ModelComp = ({modelPath}: ModelCompProps) => {
+  const gltf = useGLTF(modelPath, true)
   return (
     <primitive object={gltf.scene} />
   )
@@ -24,7 +27,12 @@ const LightsComp = () => {
 }
 
 
-const HtmlComponent = () => {
+type HtmlCompProps = {
+  children: React.ReactNode,
+  modelPath: string,
+  positionY: number
+}
+const HtmlComponent = ({children, modelPath, positionY}: HtmlCompProps) => {
   const meshRef = useRef<THREE.Mesh>(null!);
 
   useFrame((_state, delta) => {
@@ -33,11 +41,9 @@ const HtmlComponent = () => {
 
   return(
     <Section offset={0} factor={1}>
-      <group ref={meshRef} position={[0, -20, 0]}>
-        <ModelComp />
-        <Html fullscreen>
-          <div className="title">Hello</div>
-        </Html>
+      <group ref={meshRef} position={[0, positionY, 0]}>
+        <ModelComp modelPath={modelPath} />
+        {children}
       </group>
     </Section>
   )
@@ -52,7 +58,11 @@ export default function App() {
         camera={{ position: [0, 0, 120], fov: 70 }}
       >
         <LightsComp />
-        <HtmlComponent />
+        <HtmlComponent modelPath="/grey.gltf" positionY={-20}>
+          <Html fullscreen>
+            <div className="title">Hello</div>
+          </Html>
+        </HtmlComponent>
       </Canvas>
     </div>
   )
