@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+  n1:
+    container_name: n1
+    hostname: n1
+    networks:
+      - nginx_network
+    image: nodejs:v1
+  n2:
+    container_name: n2
+    hostname: n2
+    networks:
+      - nginx_network
+    image: nodejs:v1
+  n3:
+    container_name: n3
+    hostname: n3
+    networks:
+      - nginx_network
+    image: nodejs:v1
+  nginx_server:
+    container_name: nginx_server
+    hostname: nginx_server
+    networks:
+      - nginx_network
+    volumes:
+      - "${PWD}/nginx.conf:/etc/nginx/nginx.conf"
+    ports:
+      - 80:80
+    image: nginx:1.27.4
+    depends_on:
+      - n1
+      - n2
+      - n3
+
+networks:
+  nginx_network:
+    driver: bridge
