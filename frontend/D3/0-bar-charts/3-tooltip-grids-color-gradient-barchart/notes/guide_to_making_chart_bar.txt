@@ -1,3 +1,7 @@
+full_revision: 20 July 2025
+full_revision: 20 July 2025
+full_revision: 15 Aug 2025
+
 This is a rough guide to creating a Bar Chart, you should be familiar with how D3 works before using this guide
 
 1. Create your BarChart react component and return your svg element
