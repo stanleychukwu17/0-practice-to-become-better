@@ -1,10 +1,12 @@
-import { useRef } from "react"
 import * as THREE from 'three'
+import { useRef } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import {Html, useGLTF} from "@react-three/drei"
+
 import Section from "./components/Section/Section"
 import Header from "./components/Header/Header"
 import './App.css'
+
 
 type ModelCompProps = {
   modelPath: string
