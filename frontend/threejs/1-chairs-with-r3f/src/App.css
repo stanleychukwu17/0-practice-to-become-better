@@ -35,9 +35,7 @@ a {
   height: 100vh;
   background-color: var(--bg-color);
   font-optical-sizing: auto;
-  /* font-family: "Yatra One", system-ui; */
   font-family: "Murecho", sans-serif;
-  /* font-family: "Chela One", system-ui; */
 }
 
 .title {
