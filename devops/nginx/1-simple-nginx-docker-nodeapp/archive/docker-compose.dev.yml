@@ -21,9 +21,9 @@ services:
     container_name: nodeapp3
     networks: 
       - node_0_network
-  
+
   nginx_0:
-    image: nginx:1.26.3
+    image: nginx:1.27.4
     container_name: nginx_0
     hostname: nginx_0
     volumes:
