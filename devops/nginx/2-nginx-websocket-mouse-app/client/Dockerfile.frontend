@@ -1,0 +1,19 @@
+FROM node:24.2.0-alpine
+
+RUN addgroup -S app && adduser -S -G app app
+
+USER root
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+RUN npm install nodemon
+
+COPY --chown=app:app . ./
+
+EXPOSE 5173
+
+CMD ["npm", "run", "dev"]
