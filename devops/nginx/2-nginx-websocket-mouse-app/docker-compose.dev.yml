@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  frontend:
+    container_name: frontend
+    hostname: frontend
+    build:
+      context: ./client
+      dockerfile: Dockerfile.frontend
+    ports:
+      - 5173:5173
+    env_file:
+      - ./client/.env
+    networks:
+      - nginx_network
+
+  backend:
+    container_name: backend
+    hostname: backend
+    build:
+      context: ./server
+      dockerfile: Dockerfile.backend
+    ports:
+      - 9000:9000
+    networks:
+      - nginx_network
+
+networks:
+  nginx_network:
+    driver: bridge
