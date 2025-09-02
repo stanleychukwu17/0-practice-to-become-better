@@ -1,0 +1,19 @@
+FROM node:24.2.0-alpine as builder
+
+RUN addgroup -S app && adduser -S app -G app
+
+USER root
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+# USER app - for some reason, switching to "app" user doesn't work, so we have to use root
+
+COPY --chown=app:app . ./
+
+EXPOSE 5173
+
+CMD ["npm", "run", "dev"]
