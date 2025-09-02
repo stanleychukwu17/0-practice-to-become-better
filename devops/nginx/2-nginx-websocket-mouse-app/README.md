@@ -13,6 +13,8 @@ see all the answers in the .archive folder
 - create the nginx configuration file
 - create the docker-compose file and tie together all of your services
 - test your app and see that all is working properly
+    - you're going to have some errors initially, guess why?
+    - you need to add the environment variable(best to do it via your docker-compose file, but use github secrets for production)
 - when you're done
     - delete the node_modules folder
     - delete all the files that you created
