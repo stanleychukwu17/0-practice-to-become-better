@@ -16,8 +16,8 @@ see all the answers in the .archive folder
     - you're going to have some errors initially, guess why?
     - you need to add the environment variable(best to do it via your docker-compose file, but use github secrets for production)
 - when you're done
+    - use docker-compose down to remove all resources
     - delete the node_modules folder
     - delete all the files that you created
     - dockerfile, nginx.conf, docker-compose
-    - use docker-compose down to remove all resources
     - verify that there are no dangling image, containers & networks
