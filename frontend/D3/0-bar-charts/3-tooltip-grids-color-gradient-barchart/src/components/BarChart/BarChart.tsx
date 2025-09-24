@@ -149,6 +149,7 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
       // below: _ = d, but since we're not using it, we replace it with _ ; i = index;
       // i * 300 = delay in ms; teacher did i * 100; but i prefer 300 
       .delay((_, i) => i * 300)
+      .ease(d3.easeCubicInOut)
       .attr("y", (d) => yScale(d.value) )
       .attr("height", (d) => chartHeight - yScale(d.value))
 
