@@ -56,5 +56,6 @@ This is a rough guide to creating a Bar Chart, you should be familiar with how D
       - hide the tooltip
       - return the fill color back to the gradient we created
   - using transition animate the y-position and the height of the bars
+  - use delay and easing for the transition above
 
 11. Create the x-axis and y-axis with their labels
