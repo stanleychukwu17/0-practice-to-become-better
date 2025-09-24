@@ -22,7 +22,7 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
     if (!svgRef.current) return
 
     const svg = d3.select(svgRef.current);
-    svg.selectAll("*").remove(); // clear previous renders
+    svg.selectAll("*").remove(); // clear previous renders and animation
 
     const margin = { top: 20, right: 20, bottom: 50, left: 50 };
     const chartWidth = width - margin.left - margin.right;
@@ -146,7 +146,7 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
       })
       .transition()
       .duration(800)
-      // below: where _ = d, but since we're not using it, we replace it with _ ; i = index;
+      // below: _ = d, but since we're not using it, we replace it with _ ; i = index;
       // i * 300 = delay in ms; teacher did i * 100; but i prefer 300 
       .delay((_, i) => i * 300)
       .attr("y", (d) => yScale(d.value) )
