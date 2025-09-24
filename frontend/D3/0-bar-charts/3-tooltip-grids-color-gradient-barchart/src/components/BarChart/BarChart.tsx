@@ -48,7 +48,7 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
       .attr("class", "tooltip-card")
       .style("opacity", 0);
 
-    // Gradient
+    // Gradient: from top to bottom
     const defs = svg.append("defs");
     const gradient = defs
       .append("linearGradient")
@@ -65,6 +65,28 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
       .append("stop")
       .attr("offset", "100%")
       .attr("stop-color", gradientColor.current.ending);
+    
+    // Gradient: from left to right
+    defs.append("linearGradient")
+      .attr("id", "bar-gradient2")
+      .attr("x1", "0%").attr("y1", "0%")
+      .attr("x2", "100%").attr("y2", "0%")
+      .selectAll("stop")
+      .data([gradientColor.current.starting, gradientColor.current.ending])
+      .enter().append("stop")
+      .attr("offset", (_d, i) => `${i * 100}%`)
+      .attr("stop-color", (d) => d);
+    
+    // Gradient: from top-left to bottom-right
+    defs.append("linearGradient")
+      .attr("id", "bar-gradient3")
+      .attr("x1", "0%").attr("y1", "0%")
+      .attr("x2", "100%").attr("y2", "100%")
+      .selectAll("stop")
+      .data([gradientColor.current.starting, gradientColor.current.ending])
+      .enter().append("stop")
+      .attr("offset", (_d, i) => `${i * 100}%`)
+      .attr("stop-color", (d) => d);
 
     // create a group element for the charts
     const chart = svg
