@@ -31,6 +31,10 @@ This is a rough guide to creating a Bar Chart, you should be familiar with how D
   - add a style: make the opacity: 0
 
 7. create the "gradient defs" in the svg {you can look at the sample code, no need to memorize}
+   - let the "linearGradient" have an id of "bar-gradient" and let the direction be from "top to bottom"
+   -
+   - create another gradient with id: "bar-gradient2", from: left to right
+   - create another gradient with id: "bar-gradient3", from: top-left to bottom-right
 
 8. Start work on the chart, create a "group" element for the chart
   - move the <g> element: on the x-axis, use margin.left, on the y-axis, use margin.top
