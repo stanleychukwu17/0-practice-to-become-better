@@ -1,6 +1,6 @@
 full_revision: 24 July 2025
-full_revision: 24 July 2025
 full_revision: 24 Sep 2025
+full_revision: 13 Oct 2025
 
 This is a rough guide to creating a Bar Chart, you should be familiar with how D3 works before using this guide
 
