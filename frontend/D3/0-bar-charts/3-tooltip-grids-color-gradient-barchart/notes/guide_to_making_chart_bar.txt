@@ -38,7 +38,7 @@ This is a rough guide to creating a Bar Chart, you should be familiar with how D
 
 8. Start work on the chart, create a "group" element for the chart
   - move the <g> element: on the x-axis, use margin.left, on the y-axis, use margin.top
-  {we're move the <g> group element to match with our chartWidth & chartHeight}
+  {we moved the <g> group element to match with our chartWidth & chartHeight}
 
 9. Optional: Add grid-lines to the chart
   - tip, add a new group for the x-grid-lines and the y-grid-lines
