@@ -92,6 +92,13 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
     const chart = svg
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
+    /* answer from grok
+      Yes, you can replace .attr("transform", ...) with .style("transform", ...) in this specific case, and you will
+      get the same visual result — but with an important caveat. You must include px units in .style(), and it's less idiomatic in SVG/D3.
+      -
+      i.e chart.style("transform", `translate(${margin.left}px,${margin.top}px)`);
+      better to always use .attr("transform", ...), it is the standard in SVG/D3
+    */
 
     // Grid-lines for x-axis using the y-axis ticks
     chart
