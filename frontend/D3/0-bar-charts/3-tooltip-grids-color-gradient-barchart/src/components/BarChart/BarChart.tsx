@@ -158,6 +158,7 @@ export default function BarChart({data, width = 500, height = 300} : BarChartPro
           .style("top", `${event.offsetY - 30}px`);
         
         // change the bar color
+        // next time: use framer-motion to animate and transition btw colors
         d3.select(this).attr("fill", gradientColor.current.ending);
       })
       .on("mousemove", (event) => {
