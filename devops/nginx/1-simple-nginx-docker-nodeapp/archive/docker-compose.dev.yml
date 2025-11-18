@@ -23,11 +23,11 @@ services:
       - node_0_network
 
   nginx_0:
-    image: nginx:1.27.4
+    image: nginx:1.29.4
     container_name: nginx_0
     hostname: nginx_0
     volumes:
-      - "D:/Sz - projects/28-devops/3-nginx/0-practice/0-nodeapp-simple/nginx.conf:/etc/nginx/nginx.conf:/etc/nginx/nginx.conf"
+      - "D:/Sz - projects/28-devops/3-nginx/0-practice/0-nodeapp-simple/nginx.conf:/etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
     ports:
       - "80:80"
     depends_on:
